@@ -36,6 +36,7 @@
     "@ledgerhq/hw-transport-u2f": "5.36.0-deprecated",
     "@ledgerhq/hw-transport-webusb": "^5.43.0",
     "@metamask/jazzicon": "^2.0.0",
+    "@openzeppelin/contracts": "^3.4.1",
     "@reduxjs/toolkit": "^1.5.0",
     "buffer": "^6.0.3",
     "electron-updater": "^4.3.5",

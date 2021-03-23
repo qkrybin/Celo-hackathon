@@ -11,6 +11,7 @@ import { Stylesheet } from 'src/styles/types'
 
 export function WalletDetails() {
   const address = useWalletAddress()
+  console.log(address)
   const isWalletReady = address && isSignerSet()
 
   let mnemonicPhrase: string = PLACEHOLDER_MNEMONIC

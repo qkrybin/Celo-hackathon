@@ -5,7 +5,7 @@ set -euo pipefail
 # Flags:
 # -n: Name of the network: 'Alfajores' or 'Mainnet'
 
-NETWORK=""
+NETWORK="Alfajores"
 ELECTRON=false
 
 while getopts 'n:e' flag; do

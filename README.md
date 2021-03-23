@@ -51,3 +51,29 @@ In addition, there will be bonus prizes for teams that truly go above and beyond
 :construction: bug : 버그 발견, 공사중
 :building_construction: build : 프로젝트 구조 빌드 관련
 ```
+
+# 프론트엔드
+
+## 🎄 화면 구성
+
+```java
+1. 메인 화면 및 단순 디자인 화면
+2. 판매자용 페이지 (로그인/회원가입/마켓 등록하기)
+3. 지도 - 가게보기 - 가게보기
+4. 마이 페이지(NFT 불러오기, wallet 데이터 가져오기)
+```
+
+## 역할 분담
+
+- `1, 2` :
+- `3, 4` :
+
+# 백엔드
+
+## ✨ Task
+
+```js
+1. 장고 서버 제작
+2. NFT 생성
+3. Account 연결, celo wallet에서 정보 받아오기
+```
