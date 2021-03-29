@@ -16,6 +16,7 @@ import { HomeNavigator } from 'src/features/home/HomeNavigator'
 import { HomeScreen } from 'src/features/home/HomeScreen'
 import { LockConfirmationScreen } from 'src/features/lock/LockConfirmationScreen'
 import { LockFormScreen } from 'src/features/lock/LockFormScreen'
+import { RegisterScreen } from 'src/features/login/registerScreen'
 import { ImportChoiceScreen } from 'src/features/onboarding/import/ImportChoiceScreen'
 import { ImportWalletScreen } from 'src/features/onboarding/import/ImportWalletScreen'
 import { LedgerImportScreen } from 'src/features/onboarding/import/LedgerImportScreen'
@@ -24,13 +25,14 @@ import { OnboardingNavigator } from 'src/features/onboarding/OnboardingNavigator
 import { SetPincodeScreen } from 'src/features/onboarding/pincode/SetPincodeScreen'
 import { WelcomeScreen } from 'src/features/onboarding/welcome/WelcomeScreen'
 import { ChangePincodeScreen } from 'src/features/pincode/ChangePincodeScreen'
+import { UploadProductPage } from 'src/features/sellerprofile/UploadProductPage'
 import { SendConfirmationScreen } from 'src/features/send/SendConfirmationScreen'
 import { SendFormScreen } from 'src/features/send/SendFormScreen'
 import { SettingsScreen } from 'src/features/settings/SettingsScreen'
 import { ExploreValidatorsScreen } from 'src/features/validators/ExploreValidatorsScreen'
 import { StakeConfirmationScreen } from 'src/features/validators/StakeConfirmationScreen'
 import { StakeFormScreen } from 'src/features/validators/StakeFormScreen'
-import { ViewWalletScreen } from 'src/features/wallet/ViewWalletScreen'
+import { WalletScreenTest } from 'src/features/wallet/WalletScreenTest'
 import { useBrowserFeatureChecks } from 'src/utils/browsers'
 
 function Router(props: PropsWithChildren<any>) {
@@ -71,8 +73,10 @@ export const App = () => {
               <Route path="stake-review" element={<StakeConfirmationScreen />} />
               <Route path="governance" element={<GovernanceFormScreen />} />
               <Route path="governance-review" element={<GovernanceConfirmationScreen />} />
-              <Route path="wallet" element={<ViewWalletScreen />} />
+              <Route path="wallet" element={<WalletScreenTest />} />
               <Route path="settings" element={<SettingsScreen />} />
+              <Route path="register" element={<RegisterScreen/>} />
+              <Route path="seller-login" element={<UploadProductPage/>} />
             </Route>
 
             <Route path="/setup" element={<OnboardingNavigator />}>

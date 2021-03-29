@@ -65,8 +65,8 @@ In addition, there will be bonus prizes for teams that truly go above and beyond
 
 ## 역할 분담
 
-- `1, 2` :
-- `3, 4` :
+- `1, 2` : 박영빈[(@qkrybin)](https://github.com/qkrybin)
+- `3, 4` : 김나연[(@naaa187)](https://github.com/naaa187)
 
 # 백엔드
 

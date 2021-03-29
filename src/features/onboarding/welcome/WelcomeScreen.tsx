@@ -30,7 +30,7 @@ export function WelcomeScreen() {
           <Button
             size="l"
             onClick={onClickCreateNew}
-            margin="0.75em 1.5em"
+            margin="0.75em 0.5em"
             styles={{ fontSize: '1.1em' }}
           >
             Create New Account
