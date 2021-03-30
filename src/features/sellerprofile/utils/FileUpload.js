@@ -1,10 +1,10 @@
-import *as React from "react";
+import * as React from "react";
 import { useState } from "react";
 import Dropzone from "react-dropzone";
-import {Icon} from 'antd';
+import { Icon } from 'antd';
 import axios from 'axios';
 
-function FileUpload(){ 
+function FileUpload(props){ 
 	const [Images, setImage] = useState([]);
   const dropHandler=(files)=>{
     let formData=new FormData();
@@ -16,7 +16,7 @@ function FileUpload(){
     .post('/api/product/image', formData,config)
     .then(res=>{
         if(res.data.success){
-          setImages([...Images, response.data.image])
+          setImage([...Images, response.data.image])
           props.refreshFunction([...Images, response.data.image])
 
         }else{
@@ -42,7 +42,7 @@ function FileUpload(){
               <div style={{display:'flex', alignItems:'center',justifyContent:'center'}}
               {...getRootProps()}>
                   <input {...getInputProps()} />
-                  <Icon type="plus" style={{fontSize:'3rem'}}/>
+                  <Icon type="plus" style={{fontSize:'3rem'}} />
               </div>
               </section>
           )}
@@ -62,21 +62,5 @@ function FileUpload(){
 export default FileUpload;
 /* app.post('api/product/image',(req,res)=>{
     //가져온 이미지 저장
-})
-
-        {Images.map((image,index)=>(
-          <img src={`http://localhost:8080/${image}`}/>
-
-          ))}
-
-
-                  axios
-        .post('/api/product/image', formData,config)
-        .then(res=>{
-            if(res.data.success){
-              setImage([...Images,res.data.filePath]);
-            }else{
-                alert('fail')
-            }
-        })
+})  
 */
