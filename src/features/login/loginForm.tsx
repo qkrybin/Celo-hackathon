@@ -20,6 +20,7 @@ export function LoginForm( setIsLoggedIn: any) {
     setForm({ email: "", password: "" });
   };
   const validCheck = () => {
+
     if (form.email.length === 0 || form.password.length === 0) {
       alert("fill every section!");
       return false;
@@ -30,7 +31,7 @@ export function LoginForm( setIsLoggedIn: any) {
     console.log(form);
     if (!validCheck) return;
     axios
-      .post(process.env.API_HOST + "/auth/signin/", form)
+      .post("/api/server/login/", form)
       .then(function (response) {
         console.log(response);
         alert("login success!");

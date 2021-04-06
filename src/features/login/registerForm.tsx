@@ -35,10 +35,10 @@ export function RegisterForm( setIsLoggedIn: any) {
     console.log(form);
     if (!validCheck) return;
     axios
-      .post(process.env.API_HOST + "/auth/register/", form)
+      .post(process.env.API_HOST + "/server/login/", form)
       .then(function (response) {
         console.log(response);
-        alert("login success!");
+        alert("signup success!");
         setIsLoggedIn(true);
       })
       .catch(function (error) {

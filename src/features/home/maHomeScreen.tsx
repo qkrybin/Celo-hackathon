@@ -3,24 +3,26 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { RootState } from 'src/app/rootReducer'
 import { HrDivider } from 'src/components/HrDivider'
-import Chart from 'src/components/icons/chart.svg'
+import brush1 from 'src/components/icons/brush1.svg'
+import brush2 from 'src/components/icons/brush2.svg'
+import brush3 from 'src/components/icons/brush3.svg'
 import { Box } from 'src/components/layout/Box'
 import { ScreenContentFrame } from 'src/components/layout/ScreenContentFrame'
 import { useModal } from 'src/components/modal/useModal'
 import { useNavHintModal } from 'src/components/modal/useNavHintModal'
 import { config } from 'src/config'
-import { HeaderSectionEmpty } from 'src/features/home/HeaderSectionEmpty'
 import { HeaderSection } from 'src/features/home/maHeaderSection'
 import { toggleHomeHeaderDismissed } from 'src/features/settings/settingsSlice'
-import { PriceChartCelo } from 'src/features/tokenPrice/PriceChartCelo'
 import { StakeActionType } from 'src/features/validators/types'
 import { dismissActivatableReminder } from 'src/features/validators/validatorsSlice'
 import { useAreBalancesEmpty } from 'src/features/wallet/utils'
 import { Color } from 'src/styles/Color'
 import { Font } from 'src/styles/fonts'
-import { useIsMobile } from 'src/styles/mediaQueries'
+import { mq, useIsMobile } from 'src/styles/mediaQueries'
 import { Stylesheet } from 'src/styles/types'
 import { logger } from 'src/utils/logger'
+
+
 
 export function HomeScreen() {
   const isMobile = useIsMobile()
@@ -84,20 +86,23 @@ export function HomeScreen() {
   return (
     <ScreenContentFrame onClose={onClose} hideCloseButton={!onClose}>
       <div css={style.container}>
-        {!isWalletEmpty && <HeaderSection />}
-        {isWalletEmpty && <HeaderSectionEmpty />}
-
-        {showGraph && (
-          <>
+        <HeaderSection />
             <HrDivider styles={style.divider} />
-            <Box direction="row" align="end" margin="0 0 2em 0">
-              <img src={Chart} css={style.icon} alt="Price chart" />
-              <label css={style.celoPriceLabel}>Celo Price</label>
+            <Box direction="row" align="center">
+              <img src={brush1} css={style.icon} alt="Tip" />
+              <img src={brush2} css={style.icon} alt="Tip" />
+              <img src={brush3} css={style.icon} alt="Tip" />
             </Box>
+            <Box direction="column" align="center" margin="3em 0 0 0">
+              <h1 css={style.header}>What is Footprint NFT?</h1>
+            </Box>
+              <p css={style.tip}>Footprint NFT is a NFT you can earn from buying stuffs at offline flea market near you.</p>
+              <p css={style.tip}>It doesn't matter whether you are elsewhere in Europe, America or even Asia.</p>
+              <p css={style.tip}>You just have to buy anything from any market shown on Mark-at! to get these attractive footprint NFTs, also albe to create your indigenous with them. </p>
+      </div>
+      <div css={style.container} >
 
-            <PriceChartCelo showHeaderPrice={true} />
-          </>
-        )}
+
       </div>
     </ScreenContentFrame>
   )
@@ -106,11 +111,12 @@ export function HomeScreen() {
 const style: Stylesheet = {
   container: {
     maxWidth: '55rem',
+    
   },
   icon: {
     marginRight: '0.5em',
-    height: '2em',
-    width: '2em',
+    height: '76pt',
+    width: '76pt',
   },
   divider: {
     margin: '2.2em 0',
@@ -121,5 +127,20 @@ const style: Stylesheet = {
     ...Font.body,
     ...Font.bold,
     paddingBottom: '0.2em',
+  },
+  header: {
+    display: 'none',
+    [mq[768]]: {
+      display: 'block',
+      ...Font.h1,
+      ...Font.bold,
+      margin: '0.2em 0 1.2em 0',
+      color: Color.primaryBlack,
+    },
+  },
+  tip: {
+    ...Font.body,
+    lineHeight: '1.4em',
+    margin: '1em 0 0 0',
   },
 }

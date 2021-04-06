@@ -2,6 +2,10 @@ import { PropsWithChildren } from 'react'
 import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 import { BadBrowserScreen } from 'src/app/BadBrowserScreen'
 import { ErrorBoundary } from 'src/app/FailScreen'
+import { MyPage } from 'src/app/nana_myPage1'
+import { MyPageforSeller } from 'src/app/nana_myPage2'
+import { NFTpage } from 'src/app/nana_NFTpage'
+//import { NFTpaint } from 'src/app/nana_NFTpaint'
 import { NotFoundScreen } from 'src/app/NotFoundScreen'
 import { useSplashScreen } from 'src/app/splash'
 import { UpdateBanner } from 'src/app/UpdateBanner'
@@ -13,11 +17,9 @@ import { TransactionReview } from 'src/features/feed/TransactionReview'
 import { GovernanceConfirmationScreen } from 'src/features/governance/GovernanceConfirmationScreen'
 import { GovernanceFormScreen } from 'src/features/governance/GovernanceFormScreen'
 import { HomeNavigator } from 'src/features/home/HomeNavigator'
-import { HomeScreen } from 'src/features/home/maHomeScreen'
+import { HomeScreen } from 'src/features/home/HomeScreen'
 import { LockConfirmationScreen } from 'src/features/lock/LockConfirmationScreen'
 import { LockFormScreen } from 'src/features/lock/LockFormScreen'
-import { LoginScreen } from 'src/features/login/loginScreen'
-import { RegisterScreen } from 'src/features/login/registerScreen'
 import { ImportChoiceScreen } from 'src/features/onboarding/import/ImportChoiceScreen'
 import { ImportWalletScreen } from 'src/features/onboarding/import/ImportWalletScreen'
 import { LedgerImportScreen } from 'src/features/onboarding/import/LedgerImportScreen'
@@ -26,18 +28,14 @@ import { OnboardingNavigator } from 'src/features/onboarding/OnboardingNavigator
 import { SetPincodeScreen } from 'src/features/onboarding/pincode/SetPincodeScreen'
 import { WelcomeScreen } from 'src/features/onboarding/welcome/WelcomeScreen'
 import { ChangePincodeScreen } from 'src/features/pincode/ChangePincodeScreen'
-import DetailMarketPage from 'src/features/sellerprofile/marketDetail'
-import MarketRegister from 'src/features/sellerprofile/marketRegister'
-import UploadPictures from 'src/features/sellerprofile/UploadPictures'
 import { SendConfirmationScreen } from 'src/features/send/SendConfirmationScreen'
 import { SendFormScreen } from 'src/features/send/SendFormScreen'
 import { SettingsScreen } from 'src/features/settings/SettingsScreen'
 import { ExploreValidatorsScreen } from 'src/features/validators/ExploreValidatorsScreen'
 import { StakeConfirmationScreen } from 'src/features/validators/StakeConfirmationScreen'
 import { StakeFormScreen } from 'src/features/validators/StakeFormScreen'
-import { WalletScreenTest } from 'src/features/wallet/WalletScreenTest'
+import { ViewWalletScreen } from 'src/features/wallet/ViewWalletScreen'
 import { useBrowserFeatureChecks } from 'src/utils/browsers'
-
 
 function Router(props: PropsWithChildren<any>) {
   // The BrowserRouter works everywhere except windows so using hash for electron
@@ -48,7 +46,7 @@ function Router(props: PropsWithChildren<any>) {
   )
 }
 
-export const App = () => {
+export const App_2 = () => {
   const showSplash = useSplashScreen()
   const isBrowserSupported = useBrowserFeatureChecks()
 
@@ -64,6 +62,9 @@ export const App = () => {
           <UpdateBanner />
           <Routes>
             <Route path="/" element={<HomeNavigator />}>
+              <Route path="NFTpage" element={<NFTpage />} />
+              <Route path="MyPage" element={<MyPage />} />
+              <Route path="MyPageforSeller" element={<MyPageforSeller />} />
               <Route path="/" element={<HomeScreen />} />
               <Route path="tx" element={<TransactionReview />} />
               <Route path="send" element={<SendFormScreen />} />
@@ -77,17 +78,14 @@ export const App = () => {
               <Route path="stake-review" element={<StakeConfirmationScreen />} />
               <Route path="governance" element={<GovernanceFormScreen />} />
               <Route path="governance-review" element={<GovernanceConfirmationScreen />} />
-              <Route path="wallet" element={<WalletScreenTest />} />
+              <Route path="wallet" element={<ViewWalletScreen />} />
               <Route path="settings" element={<SettingsScreen />} />
-              <Route path="register" element={<RegisterScreen/>} />
-              <Route path="seller-login" element={<LoginScreen/>} />
-              <Route path="market-image" element={<UploadPictures />}/>
-              <Route path="market-detail" element={<DetailMarketPage/>}/>
-              <Route path="market-register" element={<MarketRegister/>}/>
             </Route>
 
             <Route path="/setup" element={<OnboardingNavigator />}>
               <Route path="/" element={<WelcomeScreen />} />
+              <Route path="NFTpage" element={<NFTpage />} />
+              {/*<Route path="NFTpaint" element={<NFTpaint />} />*/}
               <Route path="new" element={<NewWalletScreen />} />
               <Route path="existing" element={<ImportChoiceScreen />} />
               <Route path="import" element={<ImportWalletScreen />} />
