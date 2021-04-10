@@ -1,15 +1,18 @@
 import axios from "axios";
 import * as React from "react";
 import { useState } from "react";
+import { useNavigate } from 'react-router';
 import { Button } from 'src/components/buttons/Button';
 import { Box } from 'src/components/layout/Box';
 import { Color } from 'src/styles/Color';
+import { Font } from 'src/styles/fonts';
 import { mq } from 'src/styles/mediaQueries';
 import { Stylesheet } from 'src/styles/types';
 
-export function LoginForm( setIsLoggedIn: any) {
-  const [form, setForm] = useState({ email: "", password: "" });
 
+export function LoginForm( setIsLoggedIn: any) {
+  const [form, setForm] = useState({ id: "", pw: "" });
+  const navigate = useNavigate()
   const handleFormChange = (e:any) => {
     setForm({
       ...form,
@@ -17,11 +20,11 @@ export function LoginForm( setIsLoggedIn: any) {
     });
   };
   const resetForm = () => {
-    setForm({ email: "", password: "" });
+    setForm({ id: "", pw: "" });
   };
   const validCheck = () => {
 
-    if (form.email.length === 0 || form.password.length === 0) {
+    if (form.id.length === 0 || form.pw.length === 0) {
       alert("fill every section!");
       return false;
     }
@@ -31,15 +34,17 @@ export function LoginForm( setIsLoggedIn: any) {
     console.log(form);
     if (!validCheck) return;
     axios
-      .post("/api/server/login/", form)
+      .post(`http://ec2-3-34-14-143.ap-northeast-2.compute.amazonaws.com:8000/api/auth/login/?id=${form.id}&pw=${form.pw}`,form )
       .then(function (response) {
-        console.log(response);
-        alert("login success!");
-        setIsLoggedIn(true);
+        console.log(response.data.result);
+        if (response.data.result=='success'){
+          alert("login success!");
+          setIsLoggedIn(true);
+          navigate('/')}
+        else{ alert("login fail!");}
       })
       .catch(function (error) {
         resetForm();
-        alert("login fail!");
         console.log(error);
       });
   };
@@ -48,13 +53,14 @@ export function LoginForm( setIsLoggedIn: any) {
     <Box direction="column" align="center">
       <div css={style.formContent}>
         <Box direction="column" styles={style.inputContainer}>
+          <h1 css={Font.h1Green}>Seller Login</h1>
           <Box direction="row" margin="2em 0 0 0">
-            <span css={style.inputLabel}>EMAIL</span>
+            <span css={style.inputLabel}>ID</span>
             <input
               css={{...style.input }}
-              name="email"
+              name="id"
               type="text"
-              value={form.email}
+              value={form.id}
               onChange={handleFormChange}
             />
           </Box>
@@ -62,8 +68,8 @@ export function LoginForm( setIsLoggedIn: any) {
             <span css={style.inputLabel}>PASSWORD</span>
             <input
               css={{  ...style.input }}
-              name="password"
-              value={form.password}
+              name="pw"
+              value={form.pw}
               onChange={handleFormChange}
               type="password"
             />

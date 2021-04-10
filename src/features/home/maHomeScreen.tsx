@@ -88,12 +88,13 @@ export function HomeScreen() {
       <div css={style.container}>
         <HeaderSection />
             <HrDivider styles={style.divider} />
-            <Box direction="row" align="center">
-              <img src={brush1} css={style.icon} alt="Tip" />
-              <img src={brush2} css={style.icon} alt="Tip" />
-              <img src={brush3} css={style.icon} alt="Tip" />
-            </Box>
+
             <Box direction="column" align="center" margin="3em 0 0 0">
+              <Box direction="row" align="center">
+                <img src={brush1} css={style.icon} alt="Tip" />
+                <img src={brush2} css={style.icon} alt="Tip" />
+                <img src={brush3} css={style.icon} alt="Tip" />
+              </Box>
               <h1 css={style.header}>What is Footprint NFT?</h1>
             </Box>
               <p css={style.tip}>Footprint NFT is a NFT you can earn from buying stuffs at offline flea market near you.</p>

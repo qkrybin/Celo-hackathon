@@ -8,7 +8,7 @@ import { mq } from 'src/styles/mediaQueries';
 import { Stylesheet } from 'src/styles/types';
 
 export function RegisterForm( setIsLoggedIn: any) {
-  const [form, setForm] = useState({ email: "", password: "",name:"",confirmPassword:"" });
+  const [form, setForm] = useState({ id: "", pw: "",username:"" });
 
   const handleFormChange = (e:any) => {
     setForm({
@@ -17,25 +17,20 @@ export function RegisterForm( setIsLoggedIn: any) {
     });
   };
   const resetForm = () => {
-    setForm({ email: "", password: "", name:"",confirmPassword:"" });
+    setForm({ id:"", pw:"",username:"" });
   };
-  const validCheck = () => {
-
-    if (form.password != form.confirmPassword) {
-      alert("Passwords are not identical");
-      return false;
-    } 
-    if (form.email.length === 0 || form.password.length === 0||form.name.length === 0) {
-      alert("fill every section!");
-      return false;
-    }
-    return true;
-  };
+  // const validCheck = () => {
+  //   if (form.email.length === 0 || form.pw.length === 0||form.id.length === 0) {
+  //     alert("fill every section!");
+  //     return false;
+  //   }
+  //   return true;
+  // };
   const handleSubmit = () => {
     console.log(form);
-    if (!validCheck) return;
+    //if (!validCheck) return;
     axios
-      .post(process.env.API_HOST + "/server/login/", form)
+      .post(`http://ec2-3-34-14-143.ap-northeast-2.compute.amazonaws.com:8000/api/auth/register/`, form)
       .then(function (response) {
         console.log(response);
         alert("signup success!");
@@ -52,23 +47,23 @@ export function RegisterForm( setIsLoggedIn: any) {
     <Box direction="column" align="center">
       <div css={style.formContent}>
         <Box direction="column" styles={style.inputContainer}>
-          <Box direction="row" margin="2em 0 0 0">
-            <span css={style.inputLabel}>EMAIL</span>
+        <Box direction="row" margin="2em 0 0 0">
+            <span css={style.inputLabel}>ID</span>
             <input
               css={{...style.input }}
-              name="email"
+              name="id"
               type="text"
-              value={form.email}
+              value={form.id}
               onChange={handleFormChange}
             />
           </Box>
           <Box direction="row" margin="2em 0 0 0">
-            <span css={style.inputLabel}>NAME</span>
+            <span css={style.inputLabel}>USERNAME</span>
             <input
               css={{...style.input }}
-              name="name"
+              name="username"
               type="text"
-              value={form.name}
+              value={form.username}
               onChange={handleFormChange}
             />
           </Box>
@@ -76,22 +71,12 @@ export function RegisterForm( setIsLoggedIn: any) {
             <span css={style.inputLabel}>PASSWORD</span>
             <input
               css={{  ...style.input }}
-              name="password"
-              value={form.password}
+              name="pw"
+              value={form.pw}
               onChange={handleFormChange}
-              type="password"
+              type="text"
             />
-        </Box>
-        <Box direction="row" margin="2em 0 0 0">
-            <span css={style.inputLabel}>CONFIRM PASSWORD</span>
-            <input
-              css={{  ...style.input }}
-              name="confirmPassword"
-              value={form.confirmPassword}
-              onChange={handleFormChange}
-              type="password"
-            />
-        </Box>
+          </Box>
         </Box>
       </div>
       <Box direction="row" align ="center" margin="3em 0 0 0">

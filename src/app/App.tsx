@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useState } from 'react'
 import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 import { BadBrowserScreen } from 'src/app/BadBrowserScreen'
 import { ErrorBoundary } from 'src/app/FailScreen'
@@ -16,7 +16,7 @@ import { HomeNavigator } from 'src/features/home/HomeNavigator'
 import { HomeScreen } from 'src/features/home/maHomeScreen'
 import { LockConfirmationScreen } from 'src/features/lock/LockConfirmationScreen'
 import { LockFormScreen } from 'src/features/lock/LockFormScreen'
-import { LoginScreen } from 'src/features/login/loginScreen'
+import { LoginForm } from 'src/features/login/loginForm'
 import { RegisterScreen } from 'src/features/login/registerScreen'
 import { ImportChoiceScreen } from 'src/features/onboarding/import/ImportChoiceScreen'
 import { ImportWalletScreen } from 'src/features/onboarding/import/ImportWalletScreen'
@@ -51,7 +51,8 @@ function Router(props: PropsWithChildren<any>) {
 export const App = () => {
   const showSplash = useSplashScreen()
   const isBrowserSupported = useBrowserFeatureChecks()
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user,setUser] = useState(false);
   // Don't load the app until we're done with the splash screen
   if (showSplash) return null
 
@@ -80,11 +81,13 @@ export const App = () => {
               <Route path="wallet" element={<WalletScreenTest />} />
               <Route path="settings" element={<SettingsScreen />} />
               <Route path="register" element={<RegisterScreen/>} />
-              <Route path="seller-login" element={<LoginScreen/>} />
+              
               <Route path="market-image" element={<UploadPictures />}/>
               <Route path="market-detail" element={<DetailMarketPage/>}/>
               <Route path="market-register" element={<MarketRegister/>}/>
+              <Route path="seller-login" element={<LoginForm {...{ setIsLoggedIn }}/>}/>
             </Route>
+              
 
             <Route path="/setup" element={<OnboardingNavigator />}>
               <Route path="/" element={<WelcomeScreen />} />
