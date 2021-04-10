@@ -96,10 +96,12 @@ export function HomeScreen() {
                 <img src={brush3} css={style.icon} alt="Tip" />
               </Box>
               <h1 css={style.header}>What is Footprint NFT?</h1>
+              <Box direction="column" align="start">
+                <p css={style.tip}>Footprint NFT is a NFT you can earn from buying stuffs at offline flea market near you.</p>
+                <p css={style.tip}>It doesn't matter whether you are elsewhere in Europe, America or even Asia.</p>
+                <p css={style.tip}>You just have to buy anything from any market shown on Mark-at! to get these attractive footprint NFTs, also albe to create your indigenous with them. </p>
+              </Box>
             </Box>
-              <p css={style.tip}>Footprint NFT is a NFT you can earn from buying stuffs at offline flea market near you.</p>
-              <p css={style.tip}>It doesn't matter whether you are elsewhere in Europe, America or even Asia.</p>
-              <p css={style.tip}>You just have to buy anything from any market shown on Mark-at! to get these attractive footprint NFTs, also albe to create your indigenous with them. </p>
       </div>
       <div css={style.container} >
 
@@ -130,7 +132,6 @@ const style: Stylesheet = {
     paddingBottom: '0.2em',
   },
   header: {
-    display: 'none',
     [mq[768]]: {
       display: 'block',
       ...Font.h1,

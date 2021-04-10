@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router'
 import { Button } from 'src/components/buttons/Button'
 import PlusIcon from 'src/components/icons/plus.svg'
 import { Box } from 'src/components/layout/Box'
-import { HeaderFooterFrame } from 'src/components/layout/HeaderFooterFrame'
+import { HeaderFrame as HeaderFooterFrame } from 'src/components/layout/nana_HeaderFrame'
 import { NavButtonRow } from 'src/components/layout/NavButtonRow'
 import { TransactionFeed } from 'src/features/feed/TransactionFeed'
 import { HomeScreenWarnings } from 'src/features/home/HomeScreenWarnings'
@@ -13,7 +13,7 @@ import {
   isWindowSizeMobile,
   isWindowSizeSmallMobile,
   mq,
-  useWindowSize,
+  useWindowSize
 } from 'src/styles/mediaQueries'
 import { Stylesheet } from 'src/styles/types'
 

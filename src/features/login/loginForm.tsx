@@ -1,14 +1,14 @@
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Input } from 'antd';
 import axios from "axios";
 import * as React from "react";
 import { useState } from "react";
 import { useNavigate } from 'react-router';
-import { Button } from 'src/components/buttons/Button';
+import seller from 'src/components/icons/forsellers.svg';
+import Logo from 'src/components/icons/Mark-at_logo.svg';
 import { Box } from 'src/components/layout/Box';
-import { Color } from 'src/styles/Color';
-import { Font } from 'src/styles/fonts';
 import { mq } from 'src/styles/mediaQueries';
 import { Stylesheet } from 'src/styles/types';
-
 
 export function LoginForm( setIsLoggedIn: any) {
   const [form, setForm] = useState({ id: "", pw: "" });
@@ -52,39 +52,45 @@ export function LoginForm( setIsLoggedIn: any) {
   return (
     <Box direction="column" align="center">
       <div css={style.formContent}>
-        <Box direction="column" styles={style.inputContainer}>
-          <h1 css={Font.h1Green}>Seller Login</h1>
-          <Box direction="row" margin="2em 0 0 0">
-            <span css={style.inputLabel}>ID</span>
-            <input
-              css={{...style.input }}
-              name="id"
-              type="text"
-              value={form.id}
-              onChange={handleFormChange}
-            />
+        <Box direction="column" align="center" styles={style.inputContainer}>
+          <img width="156pt" height="48pt" src={Logo} alt="Mark-at Logo" css={style.logo} />
+          <img width="156pt" height="20pt" src={seller} alt="Mark-at Logo" css={style.logo} />
+          <Box direction="column" styles={style.inputContainer}>
+          <Input
+            size="large"
+            placeholder="ID"
+            prefix={<UserOutlined />}
+            // value={form.id}
+            // name="id"
+            // onChange={handleFormChange}
+          />
           </Box>
-          <Box direction="row" margin="2em 0 0 0">
-            <span css={style.inputLabel}>PASSWORD</span>
-            <input
-              css={{  ...style.input }}
-              name="pw"
-              value={form.pw}
-              onChange={handleFormChange}
-              type="password"
-            />
+          <Box direction="column" styles={style.inputContainer}>
+          <Input
+            size="large"
+            placeholder="PASSWORD"
+            prefix={<LockOutlined />} 
+            value={form.pw}
+            name="pw"
+            onChange={handleFormChange}
+          />
           </Box>
         </Box>
+        <Box direction="column" align="center" >
+          <button
+              style={style.btn}
+              onClick={handleSubmit}>Login
+          </button>
+          </Box>
+          <Box direction="column" align="center">
+          <button
+              style={style.btn}
+              onClick={()=>{navigate('/seller-register')}}>Sign Up
+          </button>
+        </Box>
       </div>
-      <Box direction="row" align="center" margin="3em 0 0 0">
-        <Button
-            type="button"
-            size="m"
-            color={Color.altGrey} 
-            onClick={handleSubmit}>login
-        </Button>
-      </Box>
     </Box>
+    
   );
 }
 export const MemoizedLoginForm = React.memo(LoginForm);
@@ -97,33 +103,19 @@ const style: Stylesheet = {
   },
   inputContainer: {
     marginTop: '1.5em',
-    textAlign: 'right',
-  },
-  inputLabel: {
     textAlign: 'left',
-    width: '6em',
-    paddingRight: '1em',
-    [mq[480]]: {
-      width: '8em',
-    },
   },
-  input: {
-    width: '8.6em',
-    height: '1.8em',
-    textAlign: 'center',
-    letterSpacing: '0.6em',
-    fontSize: '1.4em',
-    '::placeholder': {
-      letterSpacing: '0.3em',
-      color: Color.borderInactive,
-      opacity: 1 /* Firefox */,
-    },
-    ':focus': {
-      '::placeholder': {
-        color: Color.primaryWhite,
-        opacity: 0,
-      },
-    },
+  btn: {
+    width: '12em',
+    height:'2em',
+    marginTop: '1.5em',
+    background: 'linear-gradient(0.25turn,rgba(247,214,55),rgba(47,207,87))',
+    outline: 'none',
+    border: 'none',
+    borderRadius: 5,
+    fontWeight: 500,
+    color: 'rgba(255,255,255)',
+    font: "Poppins-Medium"
   },
-}
 
+}

@@ -11,9 +11,11 @@ import {
   isWindowSizeMobile,
   isWindowSizeSmallMobile,
   mq,
-  useWindowSize,
+  useWindowSize
 } from 'src/styles/mediaQueries'
 import { Stylesheet } from 'src/styles/types'
+
+
 
 const SCREENS_WITHOUT_FEED: Record<string, boolean> = {
   '/wallet': true,
@@ -21,6 +23,7 @@ const SCREENS_WITHOUT_FEED: Record<string, boolean> = {
 }
 
 export function ScreenFrame(props: PropsWithChildren<any>) {
+  const navigate = useNavigate()
   const frameState = useFrameState()
 
   return (
