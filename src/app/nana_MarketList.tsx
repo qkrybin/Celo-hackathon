@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { useNavigate } from 'react-router'
 import { Box } from 'src/components/layout/Box'
 import { ScreenContentFrame } from 'src/components/layout/ScreenContentFrame'
@@ -48,8 +49,10 @@ export function MarketList() {
 
   const ListComponent = (list: ListProps) => (
     <Box>
+      <a href={`/product/${list.Id}`} >
       <h1 css={style.h1}>{list.name}</h1>
       <img src={list.img} />
+      </a>
     </Box>
   )
 

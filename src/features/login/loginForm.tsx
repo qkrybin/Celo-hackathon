@@ -34,16 +34,18 @@ export function LoginForm( setIsLoggedIn: any) {
     console.log(form);
     if (!validCheck) return;
     axios
-      .post(`http://ec2-3-34-14-143.ap-northeast-2.compute.amazonaws.com:8000/api/auth/login/?id=${form.id}&pw=${form.pw}`,form )
+      .post(`http://ec2-3-34-14-143.ap-northeast-2.compute.amazonaws.com:8000/server/login/`,form )
       .then(function (response) {
-        console.log(response.data.result);
-        if (response.data.result=='success'){
+        console.log(response.data.message);
+        if (response.data.message == "1"){
           alert("login success!");
           setIsLoggedIn(true);
           navigate('/')}
-        else{ alert("login fail!");}
+        else if(response.data.message == "0"){alert("login fail!");}
+        // else alert("response error");
       })
       .catch(function (error) {
+        alert("response error");
         resetForm();
         console.log(error);
       });
@@ -60,9 +62,9 @@ export function LoginForm( setIsLoggedIn: any) {
             size="large"
             placeholder="ID"
             prefix={<UserOutlined />}
-            // value={form.id}
-            // name="id"
-            // onChange={handleFormChange}
+            value={form.id}
+            name="id"
+            onChange={handleFormChange}
           />
           </Box>
           <Box direction="column" styles={style.inputContainer}>

@@ -30,11 +30,15 @@ export function RegisterForm( setIsLoggedIn: any) {
     console.log(form);
     //if (!validCheck) return;
     axios
-      .post(`http://ec2-3-34-14-143.ap-northeast-2.compute.amazonaws.com:8000/api/auth/register/`, form)
+      .post(`http://ec2-3-34-14-143.ap-northeast-2.compute.amazonaws.com:8000/server/create/`, form)
       .then(function (response) {
         console.log(response);
+        if(response.data.message=="0"){
+          alert("already exist!");
+        }
+        else if(response.data.message=="1"){
         alert("signup success!");
-        setIsLoggedIn(true);
+        setIsLoggedIn(true);}
       })
       .catch(function (error) {
         resetForm();

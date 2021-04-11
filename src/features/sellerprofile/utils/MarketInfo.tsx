@@ -1,3 +1,4 @@
+import { Carousel } from 'antd';
 import * as React from 'react';
 import { HrDivider } from 'src/components/HrDivider';
 import period from 'src/components/icons/calendar.svg';
@@ -6,6 +7,7 @@ import location from 'src/components/icons/map-pin.svg';
 import website from 'src/components/icons/phone-call.svg';
 import { Box } from 'src/components/layout/Box';
 import { Stylesheet } from 'src/styles/types';
+
 
 export default function MarketInfo() {
   //const [Store, setStore] = useState({ id: 1,name:"",location:"",desc:"",categ:"",period:"",hour:"",website:"",mainpic:"",pic1:"",pic2:"",pic3:"",clap:0});
@@ -23,7 +25,7 @@ export default function MarketInfo() {
     ,pic3:'src/components/icons/wallet.png',clap:0});
     return (
         <div>
-
+              <Carousel autoplay>
             <div style={style.scrollwrap}>
               <div style={style.pic}>
               <img src={Store.mainpic}></img>
@@ -38,6 +40,7 @@ export default function MarketInfo() {
                 <img src={Store.pic3}></img>
               </div>
             </div>
+            </Carousel>
           <Box direction="column" align="center"> 
             <Box direction="column" align="start">
               <h1 css={style.header}>{Store.name}</h1>

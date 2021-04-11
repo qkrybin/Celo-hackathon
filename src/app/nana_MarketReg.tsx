@@ -3,19 +3,22 @@ import MarketForm from 'src/app/nana_MarketForm'
 function MarketReg() {
   const onSubmit = (form: {
     name: string
-    category: string
-    intro: string
-    address: string
+    categ: string
+    desc: string
+    location: string
     period: string
     hour: string
     website: string
+    mainpic: string
+    pic1: string
+    pic2: string
+    pic3: string
   }) => {
     console.log(form)
   }
 
   return (
     <div>
-      <h2>Add My Market</h2>
       <MarketForm onSubmit={onSubmit} />
     </div>
   )
