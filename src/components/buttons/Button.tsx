@@ -132,6 +132,7 @@ export const defaultButtonStyles: Styles = {
   ...transparentButtonStyles,
   borderRadius: 3,
   color: Color.primaryWhite,
+  
   backgroundColor: Color.primaryGreen,
   fontWeight: 500,
   ':hover': {

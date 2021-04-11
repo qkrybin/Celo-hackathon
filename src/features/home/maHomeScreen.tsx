@@ -22,8 +22,6 @@ import { mq, useIsMobile } from 'src/styles/mediaQueries'
 import { Stylesheet } from 'src/styles/types'
 import { logger } from 'src/utils/logger'
 
-
-
 export function HomeScreen() {
   const isMobile = useIsMobile()
   const isWalletEmpty = useAreBalancesEmpty()
@@ -88,7 +86,6 @@ export function HomeScreen() {
       <div css={style.container}>
         <HeaderSection />
             <HrDivider styles={style.divider} />
-
             <Box direction="column" align="center" margin="3em 0 0 0">
               <Box direction="row" align="center">
                 <img src={brush1} css={style.icon} alt="Tip" />
@@ -96,7 +93,7 @@ export function HomeScreen() {
                 <img src={brush3} css={style.icon} alt="Tip" />
               </Box>
               <h1 css={style.header}>What is Footprint NFT?</h1>
-              <Box direction="column" align="start">
+              <Box direction="column" align="center">
                 <p css={style.tip}>Footprint NFT is a NFT you can earn from buying stuffs at offline flea market near you.</p>
                 <p css={style.tip}>It doesn't matter whether you are elsewhere in Europe, America or even Asia.</p>
                 <p css={style.tip}>You just have to buy anything from any market shown on Mark-at! to get these attractive footprint NFTs, also albe to create your indigenous with them. </p>

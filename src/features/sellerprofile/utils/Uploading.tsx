@@ -26,7 +26,7 @@ function beforeUpload(file: any) {
   return isJpgOrPng && isLt2M;
 }
 
-export default function Uploading (){
+export default function Uploading (opt:any, setForm:any){
   const [loading, setLoading]=useState(false);
   const [imageUrl, setImageUrl]=useState('' as any);
 
@@ -35,22 +35,33 @@ export default function Uploading (){
       setLoading(true);
       return;
     }
+
     if (info.file.status === 'done') {
       // Get this url from response in real world.
       setImageUrl(getBase64(info.file.originFileObj));
       setLoading(false);
     }
+    switch(opt){
+      case "mainpic":
+        setForm({mainpic:imageUrl});
+      case "pic1":
+        setForm({pic1:imageUrl});
+      case "pic2":
+        setForm({pic2:imageUrl});
+      case "pic3":
+        setForm({pic3:imageUrl});
+    }
     let formData = new FormData();
-        formData.append("file", imageUrl)
-        //save the Image we chose inside the Node Server 
-        axios.post('/api/market/uploadImage', formData)
-            .then(response => {
-                  if (response.data.success) {
-                    alert('Product Successfully Uploaded')
-                    } else {
-                        alert('Failed to upload Product')
-                    }
-            })
+      formData.append("file", imageUrl)
+      //save the Image we chose inside the Node Server 
+      axios.post('/api/market/uploadImage', formData)
+          .then(response => {
+                if (response.data.success) {
+                  alert('Product Successfully Uploaded')
+                  } else {
+                      alert('Failed to upload Product')
+                  }
+          })
 
   };
   const uploadButton = (
@@ -71,6 +82,8 @@ export default function Uploading (){
       onChange={handleChange}
     >
       {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+
     </Upload>
+    
   );
 }
